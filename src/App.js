@@ -6,11 +6,12 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Register from './pages/Register';
 
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Nav />
+        <Nav /> 
 
         <main className="form-signin">
 

@@ -10,10 +10,8 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await fetch('/user/login', {
+        await fetch('http://localhost:8082/user/login', {
             method: 'POST',
-            headers: { 'Content-type': 'application/json' },
-            credentials: 'include',
             body: JSON.stringify({
                 email,
                 password

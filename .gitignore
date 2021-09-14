@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+/.vs/my-ask-app/v15/.suo
+/.vs/config/applicationhost.config
+/.vs/VSWorkspaceState.json

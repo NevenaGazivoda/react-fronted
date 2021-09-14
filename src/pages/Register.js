@@ -12,7 +12,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await fetch('/users', {
+        await fetch('http://localhost:8082/users', {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify({
