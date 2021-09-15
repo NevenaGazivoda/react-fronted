@@ -4,8 +4,12 @@ import likeSrc from '../../assets/like.png';
 
  class Like extends Component {
     render() {
-        return (  
-            <i className="bi bi-hand-thumbs-up"></i>
+        return (               
+                <img           
+                    style={{width:25, height:25}}
+                    alt="like icon"
+                    src={likeSrc} />
+            
         );
     }
 }

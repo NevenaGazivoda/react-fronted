@@ -31,6 +31,7 @@ const Register = () => {
     }
     
     return (
+        <div className="form-signin">
         <form onSubmit={handleSubmit}>
             <h1 className="h3 mb-3 fw-normal">Please register</h1>
             
@@ -52,6 +53,7 @@ const Register = () => {
 
             <button className="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
         </form>
+        </div>
     );
 };
 
