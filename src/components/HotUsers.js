@@ -2,9 +2,9 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import 'whatwg-fetch';
-import Dislike from '../components/Dislike';
-import '../components/Like';
-import Like from '../components/Like';
+import Dislike from './Dislike';
+import './Like';
+import Like from './Like';
 
 export default class HotUsers extends React.Component {
     state = {
@@ -32,6 +32,8 @@ export default class HotUsers extends React.Component {
 
                                 {this.state.usersList.map(user =>
 
+<Link to={"/questionsbyuser/" + user.pk_UserId} className="nav-link">
+
                                 <div className="d-flex text-muted pt-3">
                                     <svg className="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" dy=".3em">32x32</text></svg>
 
@@ -44,7 +46,7 @@ export default class HotUsers extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-
+</Link>
                                 )}
                             </div>
                         </div>

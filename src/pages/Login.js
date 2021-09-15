@@ -1,61 +1,75 @@
-import React, { useState } from 'react';
-import { Redirect } from 'react-router';
+import React from 'react';
 import 'whatwg-fetch';
+import { Redirect } from 'react-router';
 
-const Login = () => {    
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [redirect, setRedirect] = useState(false);
-    const [user, setUser] = useState({ email, password});
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        await fetch('http://localhost:8082/user/login', {
+export default class Login extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {email: '',
+      password: '',
+      redirect: false,
+      user: null}
+      
+  
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+  
+    handleChange(event) {
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+        this.setState({
+          [name]: value
+        });
+      //this.setState({email: event.target.value}, {password: event.target.value},{user: event.target.value});
+    }
+  
+    async handleSubmit(event) {
+      event.preventDefault();
+      const email = this.state.email;
+      const password = this.state.password;
+       var response= await fetch('http://localhost:8082/user/login', {
             method: 'POST',
             body: JSON.stringify({
                 email,
                 password
             })
         });
-        //.then(response => response.json())
-        //.then(data=> setUser(data))
-                
-        //var data = await response.json(); 
-      //setUser({email : (e.target[0].value), password: (e.target[1].value)}) 
-    //   setEmail({email: 'e.target[0].value'}) 
-    //   setPassword({password: 'e.target[1].value'})
-        console.log("aaaaaaaaaa")
-        console.log(user)
 
-        //setUser(await response.json().data) ne moze  
-        //localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('user', user)
-        setRedirect(true);    
+        var data = await response.json(); 
+        this.setState({ user: data });
 
+
+        if(this.state.user.pk_UserId !== "")
+        {
+         this.setState( {redirect : true} ) 
+        localStorage.setItem("user", JSON.stringify(this.state.user))
+        }
+
+    }
+    
+    render() {
+        if(this.state.redirect) 
+        {
+            return <Redirect to ="/"/>;    
+        }
         
-    }
-    if(redirect) {
-        //return <Redirect to ="/"/>;
-
-        return "this.user.email"
-    }
-    return (
+      return (
         <div className="form-signin">
-        <form onSubmit={handleSubmit}>
-            <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
-            <input type="email" className="form-control" placeholder="name@example.com" required
-                onChange={e=> setEmail(e.target.value)}
+        <form onSubmit={this.handleSubmit}>
+             <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+            <input type="email" name="email" className="form-control" placeholder="name@example.com" 
+                email={this.state.email} onChange={this.handleChange}
             />
 
-            <input type="password" className="form-control" placeholder="Password" required 
-                onChange={e=> setPassword(e.target.value)}                
+            <input type="password" name="password" className="form-control" placeholder="Password" required 
+                password={this.state.password} onChange={this.handleChange}             
             />
-
-            <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+          
+          <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
         </form>
         </div>
-    );
-};
-
-export default Login;
+      );
+    }
+  }

@@ -24,7 +24,7 @@ export default class Replies extends React.Component {
     render() {
 
         if (this.state.loading) {
-            return <div>loading...</div>;
+            return <div><h6 className="my-3 p-3 bg-body rounded shadow-sm">loading...</h6></div>;
         }
         if(this.state.replies == null) {
             return <div>

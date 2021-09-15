@@ -1,5 +1,7 @@
 import React from 'react';
-import Replies from '../components/Replies';
+import Replies from './Replies';
+import HotQuestions from './HotQuestions';
+import HotUsers from './HotUsers';
 
 export default class OneQuestion extends React.Component {
     state = {
@@ -36,9 +38,15 @@ export default class OneQuestion extends React.Component {
 
         return (
             <div>
-                <div className="my-3 p-3 bg-body rounded shadow-sm">
+                <div className="row">
+                <div className="col-md-3">
+                                <HotQuestions />
+                                <HotUsers/>
+                            </div>
+                <div className="col-md-9 my-3 p-3 bg-body rounded shadow-sm">
                     <h5 className="border-bottom pb-2 mb-0">{this.state.question.text}</h5>
                     <Replies qid={this.state.qid} />
+                </div>
                 </div>
             </div>
         );

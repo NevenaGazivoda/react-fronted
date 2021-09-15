@@ -5,6 +5,8 @@ import 'whatwg-fetch';
 import Dislike from '../components/Dislike';
 import '../components/Like';
 import Like from '../components/Like';
+import HotQuestions from '../components/HotQuestions';
+import HotUsers from '../components/HotUsers';
 
 export default class Home extends React.Component {
     state = {
@@ -27,8 +29,12 @@ export default class Home extends React.Component {
             <div>
                 {
                     this.state.loading ? <div>loading...</div> :
-                        <div>
-                            <div className="my-3 p-3 bg-body rounded shadow-sm">
+                        <div className ="row">
+                            <div className="col-md-3">
+                                <HotQuestions />
+                                <HotUsers/>
+                            </div>
+                            <div className="col-md-9 my-3 p-3 bg-body rounded shadow-sm">
                                 <h3 className="border-bottom pb-2 mb-0">Questions</h3>
 
                                 {this.state.questionList.map(question =>
