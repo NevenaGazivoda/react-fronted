@@ -7,32 +7,55 @@ import '../components/Like';
 import Like from '../components/Like';
 import HotQuestions from '../components/HotQuestions';
 import HotUsers from '../components/HotUsers';
+import { Redirect } from 'react-router';
 
 export default class Home extends React.Component {
     state = {
         loading: true,
         questionList: null,
+        logedUser: null,
+        redirect: false
     };
     pageNumber = 1;
     async componentDidMount() {
-
-        var response = await fetch('http://localhost:8082/questions/paging/' + this.pageNumber, {
-            method: 'GET'
-        });
-        var data = await response.json();
-        console.log(data)
-        this.setState({ questionList: data });
-        this.setState({ loading: false })
+        var data1 = await localStorage.getItem("user");
+        if(data1 === null)
+        {
+            data1 = await localStorage.getItem("user");
+        }
+        await this.setState({ logedUser: data1 })
+        
+        if (this.state.logedUser === null) {
+            this.setState({ redirect: true })
+        }else{
+            if (this.state.logedUser.pk_UserId === "") {
+                this.setState({ redirect: true })
+            }
+            else {
+                var response = await fetch('http://localhost:8082/questions/paging/' + this.pageNumber, {
+                    method: 'GET'
+                });
+                var data = await response.json();
+                console.log(data)
+                this.setState({ questionList: data });
+                this.setState({ loading: false })
+            }
+        }
     }
     render() {
+
+        if (this.state.redirect) {
+               return <Redirect to="/login" />;
+        }
         return (
+
             <div>
                 {
                     this.state.loading ? <div>loading...</div> :
-                        <div className ="row">
+                        <div className="row">
                             <div className="col-md-3">
                                 <HotQuestions />
-                                <HotUsers/>
+                                <HotUsers />
                             </div>
                             <div className="col-md-9 my-3 p-3 bg-body rounded shadow-sm">
                                 <h3 className="border-bottom pb-2 mb-0">Questions</h3>
@@ -48,7 +71,7 @@ export default class Home extends React.Component {
 
                                                     <strong className="text-gray-dark">
                                                         <h5>
-                                                        {question.text} </h5>
+                                                            {question.text} </h5>
                                                         <div className="pu-"><Like /> {question.positive}
                                                             <Dislike /> {question.negative} </div>
                                                     </strong>

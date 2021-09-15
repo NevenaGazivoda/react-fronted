@@ -20,16 +20,16 @@ function App() {
         <Nav />
 
         <main className="">
+          <Route path="/login" component={Login} />   
 
           <Route path="/" exact component={Home} />
-          <Route path="/login" component={Login} />   
           <Route path="/register" component={Register} />
           <Route path="/onequestion/:id" component={OneQuestion} />
           <Route path="/newquestion" component={NewQuestion} />
           <Route path="/newreply" component={NewReply} />
           <Route path="/hotquestions" component={HotQuestions}/>
           <Route path="/hotusers" component={HotUsers} />
-          <Route path="/questionsbyuser/:id" component={QuestionsByUser} />
+          <Route path="/questionsbyuser/" component={QuestionsByUser} />
 
         </main>
       </BrowserRouter>

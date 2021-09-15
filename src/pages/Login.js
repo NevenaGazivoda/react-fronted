@@ -38,7 +38,7 @@ export default class Login extends React.Component {
         });
 
         var data = await response.json(); 
-        this.setState({ user: data });
+        this.setState({ user: data, redirect : true });
 
 
         if(this.state.user.pk_UserId !== "")
@@ -46,7 +46,9 @@ export default class Login extends React.Component {
          this.setState( {redirect : true} ) 
         localStorage.setItem("user", JSON.stringify(this.state.user))
         }
-
+        else{
+          this.setState({ redirect : false });
+        }
     }
     
     render() {
