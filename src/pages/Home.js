@@ -74,6 +74,7 @@ export default class Home extends React.Component {
                                                             {question.text} </h5>
                                                         <div className="pu-"><Like /> {question.positive}
                                                             <Dislike /> {question.negative} </div>
+                                                            <Link to={"/newreply/" + question.pk_QuestionId} className="nav-link">Reply</Link>
                                                     </strong>
                                                 </div>
                                             </div>

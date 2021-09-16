@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Logout from './Logout';
 
 export default class Nav extends React.Component  {
     state={
@@ -16,7 +17,7 @@ export default class Nav extends React.Component  {
         {
             data1 = await localStorage.getItem("user");
         }
-        await this.setState({ logedUser: data1 })
+        await this.setState({ logedUser: JSON.parse(data1) })
         
         if (this.state.logedUser !== null) {
             if (this.state.logedUser.pk_UserId !== "") {
@@ -32,11 +33,11 @@ render(){
             <div className="container-fluid">
                 <Link to="/" className="navbar-brand" >Home</Link>
                 <Link to="/newquestion" className="navbar-brand" >New question</Link>
-                <Link to='/questionsbyuser/${this.state.logedUser.pk_UserId}' className="navbar-brand" >My question</Link>
+                <Link to= {"/questionsbyuser/" + this.state.logedUser.pk_UserId} className="navbar-brand" >My questions</Link>
                 <div>
                     <ul className="navbar-nav me-auto mb-2 mb-md-0">
                         <li className="nav-item">
-                            <Link to="/register" className="nav-link">Logout</Link>
+                           <Logout />
                         </li>
                         
                     </ul>

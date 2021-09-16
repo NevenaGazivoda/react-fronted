@@ -26,10 +26,11 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="/onequestion/:id" component={OneQuestion} />
           <Route path="/newquestion" component={NewQuestion} />
-          <Route path="/newreply" component={NewReply} />
+
+          <Route path="/newreply/:id" component={NewReply} />
           <Route path="/hotquestions" component={HotQuestions}/>
           <Route path="/hotusers" component={HotUsers} />
-          <Route path="/questionsbyuser/" component={QuestionsByUser} />
+          <Route path="/questionsbyuser/:id" component={QuestionsByUser} />
 
         </main>
       </BrowserRouter>

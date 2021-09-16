@@ -1,6 +1,7 @@
 import React from 'react';
 import 'whatwg-fetch';
 import { Redirect } from 'react-router';
+import { render } from '@testing-library/react';
 
 export default class Login extends React.Component {
     constructor(props) {
@@ -42,9 +43,14 @@ export default class Login extends React.Component {
 
 
         if(this.state.user.pk_UserId !== "")
-        {
-         this.setState( {redirect : true} ) 
-        localStorage.setItem("user", JSON.stringify(this.state.user))
+        {      
+          localStorage.setItem("user", JSON.stringify(this.state.user))
+        this.setState( {redirect : true} )     
+
+       // await setTimeout(function(){
+        //  this.props.history.push("/")
+
+        // }.bind(this), 2000);
         }
         else{
           this.setState({ redirect : false });
