@@ -49,7 +49,7 @@ export default class HotUsers extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-</Link>
+                                    </Link>
                                 )}
                             </div>
                         </div>

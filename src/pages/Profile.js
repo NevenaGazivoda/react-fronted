@@ -1,9 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default class UserPage extends React.Component {
     state = {
         loading: true,
-        user: null
+        user: null,
+        logedUser: null,
+        logged: false
     };
     async componentDidMount() {
 
@@ -14,9 +17,16 @@ export default class UserPage extends React.Component {
             method: 'GET'
         });
         var data = await response.json();
-        console.log("aaaaaaaaaa")
-        console.log(data)
         this.setState({ user: data, loading: false });
+
+        if(this.state.user.pk_UserId !== "")
+        {      
+          localStorage.setItem("user", JSON.stringify(this.state.user))
+        this.setState( {redirect : true} )     
+        }
+        else{
+          this.setState({ redirect : false });
+        }
 
     }
 
@@ -69,6 +79,24 @@ export default class UserPage extends React.Component {
                             </div>
                         </li>
                     </ul>
+                    <div className="d-flex text-muted pt-3">
+                                <div className="pb-3 mb-0 small lh-sm border-bottom w-100">
+                                    <div className="d-flex justify-content-between">
+                                        <strong className="text-gray-dark">                                       
+                                        <Link to= {"/edituser/" + this.state.user.pk_UserId} >Change your profile </Link>
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="d-flex text-muted pt-3">
+                                <div className="pb-3 mb-0 small lh-sm border-bottom w-100">
+                                    <div className="d-flex justify-content-between">
+                                        <strong className="text-gray-dark">
+                                        <Link to= {"/editpassword/" + this.state.user.pk_UserId} >Change your password </Link>
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
                 </div>
             </div>
         );
