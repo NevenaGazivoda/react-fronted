@@ -2,7 +2,7 @@ import React from 'react';
 import 'whatwg-fetch';
 import { Redirect } from 'react-router';
 
-export default class NewR extends React.Component {
+export default class NewReply extends React.Component {
     constructor(props) {
       super(props);
       this.state = {text: '',

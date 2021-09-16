@@ -11,6 +11,8 @@ import NewReply from './components/NewReply';
 import HotQuestions from './components/HotQuestions';
 import HotUsers from './components/HotUsers';
 import QuestionsByUser from './components/QuestionsByUser';
+import EditQuestion from './components/EditQuestion';
+import EditReply from './components/EditReply';
 
 
 function App() {
@@ -26,11 +28,12 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="/onequestion/:id" component={OneQuestion} />
           <Route path="/newquestion" component={NewQuestion} />
-
+          <Route path="/editquestion/:pk_QuestionId" component={EditQuestion} />
           <Route path="/newreply/:id" component={NewReply} />
           <Route path="/hotquestions" component={HotQuestions}/>
           <Route path="/hotusers" component={HotUsers} />
           <Route path="/questionsbyuser/:id" component={QuestionsByUser} />
+          <Route path="/editreply/:pk_ReplyId" component={EditReply} />
 
         </main>
       </BrowserRouter>

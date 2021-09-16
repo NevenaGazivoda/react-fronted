@@ -42,6 +42,9 @@ export default class HotUsers extends React.Component {
 
                                             <strong className="text-gray-dark">
                                                     {user.name} {user.surname}
+                                                    <div>
+                                                        {user.comment_count} comments
+                                                        </div>
                                             </strong>
                                         </div>
                                     </div>

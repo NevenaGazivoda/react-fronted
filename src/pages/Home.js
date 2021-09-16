@@ -14,7 +14,8 @@ export default class Home extends React.Component {
         loading: true,
         questionList: null,
         logedUser: null,
-        redirect: false
+        redirect: false,
+        user: null
     };
     pageNumber = 1;
     async componentDidMount() {
@@ -32,11 +33,12 @@ export default class Home extends React.Component {
                 this.setState({ redirect: true })
             }
             else {
+                
+                this.setState({user: JSON.parse(this.state.logedUser)})
                 var response = await fetch('http://localhost:8082/questions/paging/' + this.pageNumber, {
                     method: 'GET'
                 });
                 var data = await response.json();
-                console.log(data)
                 this.setState({ questionList: data });
                 this.setState({ loading: false })
             }
@@ -75,6 +77,12 @@ export default class Home extends React.Component {
                                                         <div className="pu-"><Like /> {question.positive}
                                                             <Dislike /> {question.negative} </div>
                                                             <Link to={"/newreply/" + question.pk_QuestionId} className="nav-link">Reply</Link>
+                                                            
+                                                            {/* {question.fk_UserId === this.state.user.pk_UserId
+                                                                 ?   <Link to={"/editquestion/" + question.pk_QuestionId} className="nav-link">Edit</Link>
+                                                                 : <i></i> 
+                                                            } */}
+                                                            
                                                     </strong>
                                                 </div>
                                             </div>

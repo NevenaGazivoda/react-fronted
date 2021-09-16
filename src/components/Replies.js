@@ -1,14 +1,24 @@
 import React from 'react';
 import Dislike from '../components/Dislike';
 import Like from '../components/Like';
+
+import { Link } from 'react-router-dom';
+
 export default class Replies extends React.Component {
     state = {
         loading: true,
         replies: null,
-        questionId: null
+        questionId: null,
+        logedUser: null
     };
     async componentDidMount() {
-
+        var data1 = await localStorage.getItem("user");
+        if(data1 === null)
+        {
+            data1 = await localStorage.getItem("user");
+        }
+        await this.setState({ logedUser: JSON.parse(data1)})
+        
       //  const{id} = this.props.match.params;
       console.log(this.props.qid)
         
@@ -45,6 +55,11 @@ export default class Replies extends React.Component {
                                    <h6> {reply.text} </h6>
                                     <div className="pu-"><Like /> {reply.positive}
                                         <Dislike /> {reply.negative} </div>
+
+                                        {reply.fk_UserId === this.state.logedUser.pk_UserId
+                                                                 ?   <Link to={"/editreply/" + reply.pk_ReplyId} className="nav-link">Edit</Link>
+                                                                 : <i></i> 
+                                                            }
                                 </strong>
 
                             </div>

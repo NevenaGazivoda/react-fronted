@@ -42,7 +42,8 @@ export default class HotQuestions extends React.Component {
 
                                                     <strong className="text-gray-dark">
                                                         {question.text}
-                                                        <div className="pu-">
+                                                        <div>
+                                                        {question.reaction_count} <Like/>
                                                         </div>
                                                     </strong>
                                                 </div>
