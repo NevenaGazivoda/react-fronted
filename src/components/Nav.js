@@ -34,6 +34,7 @@ render(){
                 <Link to="/" className="navbar-brand" >Home</Link>
                 <Link to="/newquestion" className="navbar-brand" >New question</Link>
                 <Link to= {"/questionsbyuser/" + this.state.logedUser.pk_UserId} className="navbar-brand" >My questions</Link>
+                <Link to= {"/userprofile/" + this.state.logedUser.pk_UserId} className="navbar-brand" >My profile</Link>
                 <div>
                     <ul className="navbar-nav me-auto mb-2 mb-md-0">
                         <li className="nav-item">

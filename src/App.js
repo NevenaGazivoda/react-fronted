@@ -13,6 +13,7 @@ import HotUsers from './components/HotUsers';
 import QuestionsByUser from './components/QuestionsByUser';
 import EditQuestion from './components/EditQuestion';
 import EditReply from './components/EditReply';
+import UserPage from './pages/Profile';
 
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
           <Route path="/hotusers" component={HotUsers} />
           <Route path="/questionsbyuser/:id" component={QuestionsByUser} />
           <Route path="/editreply/:pk_ReplyId" component={EditReply} />
+
+          <Route path="/userprofile/:id" component={UserPage} />
 
         </main>
       </BrowserRouter>
