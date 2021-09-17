@@ -4,19 +4,17 @@ import likeSrc from '../assets/like.png';
 import dislikeSrc from '../assets/dislike.png';
 
 
-class LikesQ extends Component {
+class LikesR extends Component {
   constructor(props) {
     super(props);
         this.state = {
         fk_UserId: '',
-        fk_QuestionId: '',
+        fk_ReplyId: '',
         reaction: true,
         logedUser: null,
-        qid: null,
+        rid: null,
         positive: 0,
-        negative:0,
-        questionNow: null,
-        questionNowObj: null
+        negative:0
         }    
     this.incFav = this.incFav.bind(this);
     this.decFav = this.decFav.bind(this);
@@ -25,7 +23,7 @@ class LikesQ extends Component {
 
   async componentDidMount() {
 
-    this.setState({qid: this.props.fk_QuestionId})
+    this.setState({rid: this.props.fk_ReplyId})
     this.setState({fk_UserId: this.props.fk_UserId})
     this.setState({positive: this.props.positive})
     this.setState({negative: this.props.negative})
@@ -33,23 +31,23 @@ class LikesQ extends Component {
   }
 
   async incFav() {
-    this.setState(prevState => ({ likes: prevState.likes + 1 }));
-
 
       const fk_UserId = this.state.fk_UserId;
-      const fk_QuestionId = this.state.qid;
+      const fk_ReplyId = this.state.rid;
       const reaction= true;
       
 
-      var response =  await fetch(`http://localhost:8082/usersquestions`, {
+      var response = await fetch(`http://localhost:8082/usersreplies`, {
             method: 'POST',
             body: JSON.stringify({
                 reaction,
                 fk_UserId,
-                fk_QuestionId
+                fk_ReplyId
             })
         });
 
+        
+        
         var data = await response.json();
         
         console.log(data.positive);
@@ -58,23 +56,22 @@ class LikesQ extends Component {
   }
 
   async decFav() {
-    this.setState(prevState => ({ likes: prevState.likes - 1 }));
-
 
       const fk_UserId = this.state.fk_UserId;
-      const fk_QuestionId = this.state.qid;
+      const fk_ReplyId = this.state.rid;
       const reaction= false;
       
 
-      var response = await fetch(`http://localhost:8082/usersquestions`, {
+      var response = await fetch(`http://localhost:8082/usersreplies`, {
             method: 'POST',
             body: JSON.stringify({
                 reaction,
                 fk_UserId,
-                fk_QuestionId
+                fk_ReplyId
             })
         });
 
+        
         
         var data = await response.json();
         
@@ -100,4 +97,4 @@ class LikesQ extends Component {
   }
 }
 
-export default LikesQ;
+export default LikesR;

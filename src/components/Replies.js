@@ -3,6 +3,7 @@ import Dislike from '../components/Dislike';
 import Like from '../components/Like';
 
 import { Link } from 'react-router-dom';
+import LikesR from './LikesR';
 
 export default class Replies extends React.Component {
     state = {
@@ -53,8 +54,9 @@ export default class Replies extends React.Component {
 
                                 <strong className="text-gray-dark">
                                    <h6> {reply.text} </h6>
-                                    <div className="pu-"><Like /> {reply.positive}
-                                        <Dislike /> {reply.negative} </div>
+                                   <div className="pu-"><LikesR fk_ReplyId={reply.pk_ReplyId} fk_UserId={this.state.logedUser.pk_UserId}
+                                            positive={reply.positive} negative={reply.negative} /> </div>
+                                   
 
                                         {reply.fk_UserId === this.state.logedUser.pk_UserId
                                                                  ?   <Link to={"/editreply/" + reply.pk_ReplyId} className="nav-link">Edit</Link>

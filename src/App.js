@@ -17,6 +17,7 @@ import UserPage from './pages/Profile';
 import EditUser from './components/EditUser';
 import EditPassword from './components/EditPassword';
 import LikesQ from './components/LikesQ';
+import LikesR from './components/LikesR';
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
           <Route path="/editpassword/:pk_UserId" component={EditPassword} />
 
           <Route path="/likesq/: id" component={LikesQ} />
+          <Route path="/likesr/: id" component={LikesR} />
 
         </main>
       </BrowserRouter>
