@@ -44,9 +44,6 @@ export default class NewReply extends React.Component {
       
       const fk_UserId = this.state.logedUser.pk_UserId;
       const fk_QuestionId = this.state.qid;
-      console.log(fk_UserId)
-      console.log(text)
-      console.log(fk_QuestionId)
 
       var response = await fetch('http://localhost:8082/replies', {
             method: 'POST',

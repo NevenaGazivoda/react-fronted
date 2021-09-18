@@ -36,7 +36,6 @@ export default class NewQuestion extends React.Component {
       await this.setState({ logedUser: JSON.parse(data1) })
       
       const fk_UserId = this.state.logedUser.pk_UserId;
-      console.log(fk_UserId)
 
       var response = await fetch('http://localhost:8082/questions', {
         method: 'POST',

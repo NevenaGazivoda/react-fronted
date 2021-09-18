@@ -17,7 +17,6 @@ export default class HotUsers extends React.Component {
             method: 'GET'
         });
         var data = await response.json();
-        console.log(data)
         this.setState({ usersList: data });
         this.setState({ loading: false })
     }

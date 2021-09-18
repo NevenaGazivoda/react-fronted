@@ -17,7 +17,6 @@ export default class HotQuestions extends React.Component {
             method: 'GET'
         });
         var data = await response.json();
-        console.log(data)
         this.setState({ questionList: data });
         this.setState({ loading: false })
     }

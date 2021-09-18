@@ -49,7 +49,6 @@ export default class EditUser extends React.Component {
       const email = this.state.email;
       const {pk_UserId} = this.props.match.params;
 
-        console.log(pk_UserId)
       var response = await fetch('http://localhost:8082/usersEdit', {
         method: 'POST',
         body: JSON.stringify({

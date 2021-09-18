@@ -20,8 +20,6 @@ export default class Replies extends React.Component {
         }
         await this.setState({ logedUser: JSON.parse(data1)})
         
-      //  const{id} = this.props.match.params;
-      console.log(this.props.qid)
         
         var response1 = await fetch(`http://localhost:8082/replies/${this.props.qid}`, {
             method: 'GET'
@@ -29,7 +27,6 @@ export default class Replies extends React.Component {
         var data1 = await response1.json();
         
         this.setState({ replies: data1, loading: false});
-        console.log(this.state.replies)
     }
 
     render() {

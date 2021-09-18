@@ -50,7 +50,6 @@ class LikesR extends Component {
         
         var data = await response.json();
         
-        console.log(data.positive);
         await this.setState({ positive : data.positive})
         await this.setState({ negative : data.negative})
   }
@@ -75,7 +74,6 @@ class LikesR extends Component {
         
         var data = await response.json();
         
-        console.log(data.positive);
         await this.setState({ positive : data.positive})
         await this.setState({ negative : data.negative})
   }

@@ -20,8 +20,6 @@ export default class OneQuestion extends React.Component {
             method: 'GET'
         });
         var data = await response.json();
-        console.log("aaaaaaaaaa")
-        console.log(data)
         this.setState({ question: data, loading: false });
         
     }

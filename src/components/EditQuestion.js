@@ -25,13 +25,8 @@ export default class EditQuestion extends React.Component {
             method: 'GET'
         });
         var data = await response.json();
-        console.log("aaaaaaaaaa")
-        console.log(data)
         this.setState({ question: data, loading: false });
-        console.log(this.state.question)
         this.setState({text: this.state.question.text})
-        console.log(this.state.text)
-        
     }
   
     handleChange(event) {
@@ -48,9 +43,6 @@ export default class EditQuestion extends React.Component {
 
       const text = this.state.text;
       const {pk_QuestionId} = this.props.match.params;
-
-      console.log(text)
-      console.log(pk_QuestionId)
 
       var response = await fetch('http://localhost:8082/questionsEdit', {
         method: 'POST',

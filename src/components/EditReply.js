@@ -25,12 +25,8 @@ export default class EditReply extends React.Component {
             method: 'GET'
         });
         var data = await response.json();
-        console.log("aaaaaaaaaa")
-        console.log(data)
         this.setState({ reply: data, loading: false });
-        console.log(this.state.reply)
         this.setState({text: this.state.reply.text})
-        console.log(this.state.text)
         
     }
   

@@ -52,7 +52,6 @@ class LikesQ extends Component {
 
         var data = await response.json();
         
-        console.log(data.positive);
         await this.setState({ positive : data.positive})
         await this.setState({ negative : data.negative})
   }
@@ -78,7 +77,6 @@ class LikesQ extends Component {
         
         var data = await response.json();
         
-        console.log(data.positive);
         await this.setState({ positive : data.positive})
         await this.setState({ negative : data.negative})
   }
