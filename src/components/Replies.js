@@ -21,7 +21,7 @@ export default class Replies extends React.Component {
         await this.setState({ logedUser: JSON.parse(data1)})
         
         
-        var response1 = await fetch(`http://localhost:8082/replies/${this.props.qid}`, {
+        var response1 = await fetch(`https://ask-me-golang.herokuapp.com/replies/${this.props.qid}`, {
             method: 'GET'
         });
         var data1 = await response1.json();

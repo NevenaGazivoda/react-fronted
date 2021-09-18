@@ -12,7 +12,7 @@ const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await fetch('http://localhost:8082/users', {
+        await fetch('https://ask-me-golang.herokuapp.com/users', {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify({

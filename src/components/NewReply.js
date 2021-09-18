@@ -45,7 +45,7 @@ export default class NewReply extends React.Component {
       const fk_UserId = this.state.logedUser.pk_UserId;
       const fk_QuestionId = this.state.qid;
 
-      var response = await fetch('http://localhost:8082/replies', {
+      var response = await fetch('https://ask-me-golang.herokuapp.com/replies', {
             method: 'POST',
             body: JSON.stringify({
                 text,

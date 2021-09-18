@@ -32,7 +32,7 @@ export default class EditPassword extends React.Component {
       const password = this.state.password;
       const {pk_UserId} = this.props.match.params;
 
-      var response = await fetch('http://localhost:8082/usersPassword', {
+      var response = await fetch('https://ask-me-golang.herokuapp.com/usersPassword', {
         method: 'POST',
         body: JSON.stringify({
             password,

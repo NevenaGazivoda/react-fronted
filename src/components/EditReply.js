@@ -21,7 +21,7 @@ export default class EditReply extends React.Component {
         const{pk_ReplyId} = this.props.match.params;
 
 
-        var response = await fetch(`http://localhost:8082/reply/${pk_ReplyId}`, {
+        var response = await fetch(`https://ask-me-golang.herokuapp.com/reply/${pk_ReplyId}`, {
             method: 'GET'
         });
         var data = await response.json();
@@ -46,7 +46,7 @@ export default class EditReply extends React.Component {
       const {pk_ReplyId} = this.props.match.params;
 
 
-      var response = await fetch('http://localhost:8082/repliesEdit', {
+      var response = await fetch('https://ask-me-golang.herokuapp.com/repliesEdit', {
         method: 'POST',
         body: JSON.stringify({
             text,

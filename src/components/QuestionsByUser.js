@@ -18,7 +18,7 @@ export default class QuestionsByUser extends React.Component {
         const{id} = this.props.match.params;
         this.setState({qid: id})
 
-        var response = await fetch(`http://localhost:8082/questions/${id}/1`, {
+        var response = await fetch(`https://ask-me-golang.herokuapp.com/questions/${id}/1`, {
             method: 'GET'
         });
         var data = await response.json();

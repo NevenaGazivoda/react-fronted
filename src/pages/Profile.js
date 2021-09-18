@@ -13,7 +13,7 @@ export default class UserPage extends React.Component {
         const { id } = this.props.match.params;
 
 
-        var response = await fetch(`http://localhost:8082/users/${id}`, {
+        var response = await fetch(`https://ask-me-golang.herokuapp.com/users/${id}`, {
             method: 'GET'
         });
         var data = await response.json();

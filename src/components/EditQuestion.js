@@ -21,7 +21,7 @@ export default class EditQuestion extends React.Component {
         const{pk_QuestionId} = this.props.match.params;
 
 
-        var response = await fetch(`http://localhost:8082/questions/${pk_QuestionId}`, {
+        var response = await fetch(`https://ask-me-golang.herokuapp.com/questions/${pk_QuestionId}`, {
             method: 'GET'
         });
         var data = await response.json();
@@ -44,7 +44,7 @@ export default class EditQuestion extends React.Component {
       const text = this.state.text;
       const {pk_QuestionId} = this.props.match.params;
 
-      var response = await fetch('http://localhost:8082/questionsEdit', {
+      var response = await fetch('https://ask-me-golang.herokuapp.com/questionsEdit', {
         method: 'POST',
         body: JSON.stringify({
             text,

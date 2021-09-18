@@ -13,7 +13,7 @@ export default class HotQuestions extends React.Component {
     };
     async componentDidMount() {
 
-        var response = await fetch('http://localhost:8082/questionsHot', {
+        var response = await fetch('https://ask-me-golang.herokuapp.com/questionsHot', {
             method: 'GET'
         });
         var data = await response.json();

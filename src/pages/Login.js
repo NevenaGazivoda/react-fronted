@@ -30,7 +30,7 @@ export default class Login extends React.Component {
       event.preventDefault();
       const email = this.state.email;
       const password = this.state.password;
-       var response= await fetch('http://localhost:8082/user/login', {
+       var response= await fetch('https://ask-me-golang.herokuapp.com/user/login', {
             method: 'POST',
             body: JSON.stringify({
                 email,

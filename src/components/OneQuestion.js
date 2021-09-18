@@ -16,7 +16,7 @@ export default class OneQuestion extends React.Component {
 
         this.setState({qid: id})
 
-        var response = await fetch(`http://localhost:8082/questions/${id}`, {
+        var response = await fetch(`https://ask-me-golang.herokuapp.com/questions/${id}`, {
             method: 'GET'
         });
         var data = await response.json();

@@ -37,7 +37,7 @@ class LikesR extends Component {
       const reaction= true;
       
 
-      var response = await fetch(`http://localhost:8082/usersreplies`, {
+      var response = await fetch(`https://ask-me-golang.herokuapp.com/usersreplies`, {
             method: 'POST',
             body: JSON.stringify({
                 reaction,
@@ -61,7 +61,7 @@ class LikesR extends Component {
       const reaction= false;
       
 
-      var response = await fetch(`http://localhost:8082/usersreplies`, {
+      var response = await fetch(`https://ask-me-golang.herokuapp.com/usersreplies`, {
             method: 'POST',
             body: JSON.stringify({
                 reaction,

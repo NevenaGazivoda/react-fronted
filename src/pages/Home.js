@@ -35,7 +35,7 @@ export default class Home extends React.Component {
             else {
 
                 this.setState({ user: JSON.parse(this.state.logedUser) })
-                var response = await fetch('http://localhost:8082/questions/paging/' + this.pageNumber, {
+                var response = await fetch('https://ask-me-golang.herokuapp.com/questions/paging/' + this.pageNumber, {
                     method: 'GET'
                 });
                 var data = await response.json();

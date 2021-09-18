@@ -22,7 +22,7 @@ export default class EditUser extends React.Component {
 
         const{pk_UserId} = this.props.match.params;
 
-        var response = await fetch(`http://localhost:8082/users/${pk_UserId}`, {
+        var response = await fetch(`https://ask-me-golang.herokuapp.com/users/${pk_UserId}`, {
             method: 'GET'
         });
         var data = await response.json();
@@ -49,7 +49,7 @@ export default class EditUser extends React.Component {
       const email = this.state.email;
       const {pk_UserId} = this.props.match.params;
 
-      var response = await fetch('http://localhost:8082/usersEdit', {
+      var response = await fetch('https://ask-me-golang.herokuapp.com/usersEdit', {
         method: 'POST',
         body: JSON.stringify({
             name,
